@@ -8,9 +8,6 @@ class Supplier(SqlAlchemyBase):
 
     id = sa.Column(sa.Integer, primary_key=True, autoincrement=True)
     name = sa.Column(sa.String)
-    description = sa.Column(sa.String, nullable=True)
-    consumable_id = sa.Column(sa.Integer, sa.ForeignKey('Consumables.id'))
-    price = sa.Column(sa.Integer, nullable=True)
-    count = sa.Column(sa.Integer, nullable=True)
+    address = sa.Column(sa.String)
 
-    consumable = orm.relationship('Consumable')
+    catalog_position = orm.relationship('Catalog', back_populates='supplier')

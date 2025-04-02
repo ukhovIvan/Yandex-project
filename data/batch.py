@@ -7,13 +7,13 @@ class Batch(SqlAlchemyBase):
     __tablename__ = 'Batches'
 
     id = sa.Column(sa.Integer, primary_key=True, autoincrement=True)
+    order_id = sa.Column(sa.Integer, sa.ForeignKey('Orders.id'))
     culture_id = sa.Column(sa.Integer, sa.ForeignKey('Cultures.id'))
     count = sa.Column(sa.Integer)
     start_date = sa.Column(sa.DateTime)
-    sale_date = sa.Column(sa.DateTime)
-    condition_id = sa.Column(sa.Integer, sa.ForeignKey('Conditions.id'))
-    buyer_id = sa.Column(sa.Integer, sa.ForeignKey('Buyers.id'))
+    end_date = sa.Column(sa.DateTime)
+    status_view = sa.Column(sa.String)
+    status_real = sa.Column(sa.String)
 
-    buyer = orm.relationship('Buyer')
-    condition = orm.relationship('Condition')
-    checklist = orm.relationship('Checklist', back_populates='batch')
+    order = orm.relationship('Order', back_populates='batch')
+    culture = orm.relationship('Culture', back_populates='batch')

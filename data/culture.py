@@ -8,13 +8,7 @@ class Culture(SqlAlchemyBase):
 
     id = sa.Column(sa.Integer, primary_key=True, autoincrement=True)
     name = sa.Column(sa.String)
-    expense_id = sa.Column(sa.Integer, sa.ForeignKey('Expenses.id'))
-    stage_1 = sa.Column(sa.String)
-    description_1 = sa.Column(sa.String, nullable=True)
-    stage_2 = sa.Column(sa.String)
-    description_2 = sa.Column(sa.String, nullable=True)
-    stage_3  = sa.Column(sa.String)
-    description_3 = sa.Column(sa.String, nullable=True)
+    instruction = sa.Column(sa.String)
 
-    expense = orm.relationship('Expense')
-    buyer_correlation = orm.relationship('CultureBuyerCorrelation', back_populates='culture')
+    batch = orm.relationship('Batch', back_populates='culture')
+    consumable_correlation = orm.relationship('CultureConsumableCorrelation', back_populates='culture')

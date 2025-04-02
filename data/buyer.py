@@ -9,6 +9,8 @@ class Buyer(SqlAlchemyBase):
     id = sa.Column(sa.Integer, primary_key=True, autoincrement=True)
     name = sa.Column(sa.String)
     address = sa.Column(sa.String)
+    phone_number = sa.Column(sa.String)
+    email = sa.Column(sa.String)
+    password = sa.Column(sa.String)
 
-    batch = orm.relationship('Batch', back_populates='buyer')
-    culture_correlation = orm.relationship('CultureBuyerCorrelation', back_populates='buyer')
+    order = orm.relationship('Order', back_populates='buyer')
