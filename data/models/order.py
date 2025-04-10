@@ -1,9 +1,10 @@
 import sqlalchemy as sa
 import sqlalchemy.orm as orm
+from sqlalchemy_serializer import SerializerMixin
 from data.db_session import SqlAlchemyBase
 
 
-class Order(SqlAlchemyBase):
+class Order(SqlAlchemyBase, SerializerMixin):
     __tablename__ = 'Orders'
     
     id = sa.Column(sa.Integer, primary_key=True, autoincrement=True)

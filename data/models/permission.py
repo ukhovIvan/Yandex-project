@@ -1,0 +1,13 @@
+class Permission:
+    BATCHES = 1
+    BUYERS = 2
+    CATALOG = 4
+    CONSUMABLES = 8
+    CULTURES = 16
+    DELIVERIES = 32
+    ORDERS = 64
+    SUPPLIERS = 128
+    SUPPLIES = 256
+    WAREHOUSES = 512
+    WORKERS = 1024
+

@@ -1,9 +1,10 @@
 import sqlalchemy as sa
 import sqlalchemy.orm as orm
+from sqlalchemy_serializer import SerializerMixin
 from data.db_session import SqlAlchemyBase
 
 
-class Catalog(SqlAlchemyBase):
+class Catalog(SqlAlchemyBase, SerializerMixin):
     __tablename__ = 'Catalog'
     
     id = sa.Column(sa.Integer, primary_key=True, autoincrement=True)
@@ -13,5 +14,5 @@ class Catalog(SqlAlchemyBase):
     comment = sa.Column(sa.String)
     
     consumable = orm.relationship('Consumable')
-    supplier = orm.relationship('Suppliers')
+    supplier = orm.relationship('Supplier', back_populates='catalog_position')
     supply = orm.relationship('Supply', back_populates='catalog')
