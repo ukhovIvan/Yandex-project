@@ -11,8 +11,8 @@ class Batch(SqlAlchemyBase, SerializerMixin):
     order_id = sa.Column(sa.Integer, sa.ForeignKey('Orders.id'))
     culture_id = sa.Column(sa.Integer, sa.ForeignKey('Cultures.id'))
     count = sa.Column(sa.Integer)
-    start_date = sa.Column(sa.DateTime)
-    end_date = sa.Column(sa.DateTime)
+    start_date = sa.Column(sa.String)
+    end_date = sa.Column(sa.String)
     status_view = sa.Column(sa.String)
     status_real = sa.Column(sa.String)
 

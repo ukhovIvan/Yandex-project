@@ -10,14 +10,14 @@ parser.add_argument('instruction', required=True)
 
 class CultureResource(Resource):
     def get(self, culture_id):
-        abort_if_news_not_found(culture_id)
+        abort_if_culture_not_found(culture_id)
         session = create_session()
         culture = session.query(Culture).get(culture_id)
         return jsonify({'culture': culture.to_dict(
             only=('name', 'instruction'))})
 
     def delete(self, culture_id):
-        abort_if_news_not_found(culture_id)
+        abort_if_culture_not_found(culture_id)
         session = create_session()
         culture = session.query(Culture).get(culture_id)
         session.delete(culture)
@@ -44,8 +44,8 @@ class CultureListResource(Resource):
         return jsonify({'id': culture.id})
 
 
-def abort_if_news_not_found(culture_id):
+def abort_if_culture_not_found(culture_id):
     session = create_session()
-    news = session.query(Culture).get(culture_id)
-    if not news:
+    culture = session.query(Culture).get(culture_id)
+    if not culture:
         abort(404, message=f"Culture {culture_id} not found")
